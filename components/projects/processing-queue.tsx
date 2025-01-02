@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ENHANCEMENT_OPTIONS } from '@/lib/constants/enhancements';
-import { usePhotoStore, type PhotoJob } from '@/lib/stores/photo-store';
+import { usePhotoStore } from '@/lib/stores/photo-store';
+import { PhotoJob } from '@/types/project';
 import { formatDistanceToNow } from 'date-fns';
 import {
   AlertCircle,
@@ -87,7 +88,7 @@ function ProcessingJobCard({
         return <CheckCircle className="h-4 w-4 text-green-500" />;
       case 'failed':
         return <AlertCircle className="h-4 w-4 text-destructive" />;
-      case 'queued':
+      case 'pending':
         return <History className="h-4 w-4 text-muted-foreground" />;
       default:
         return (

@@ -1,13 +1,13 @@
-"use client"
+'use client';
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { Zap, Clock } from "lucide-react"
-import { type ProcessingSpeed } from "@/lib/stores/photo-store"
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { ProcessingSpeed } from '@/types/project';
+import { Clock, Zap } from 'lucide-react';
 
 interface SpeedSelectorProps {
-  value: ProcessingSpeed
-  onChange: (value: ProcessingSpeed) => void
+  value: ProcessingSpeed;
+  onChange: (value: ProcessingSpeed) => void;
 }
 
 export function SpeedSelector({ value, onChange }: SpeedSelectorProps) {
@@ -18,7 +18,11 @@ export function SpeedSelector({ value, onChange }: SpeedSelectorProps) {
       className="grid grid-cols-2 gap-4"
     >
       <div className="relative">
-        <RadioGroupItem value="standard" id="standard" className="peer sr-only" />
+        <RadioGroupItem
+          value="standard"
+          id="standard"
+          className="peer sr-only"
+        />
         <Label
           htmlFor="standard"
           className="flex flex-col items-center gap-2 p-4 border rounded-lg cursor-pointer hover:bg-accent transition-colors peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5"
@@ -32,7 +36,11 @@ export function SpeedSelector({ value, onChange }: SpeedSelectorProps) {
       </div>
 
       <div className="relative">
-        <RadioGroupItem value="expedited" id="expedited" className="peer sr-only" />
+        <RadioGroupItem
+          value="expedited"
+          id="expedited"
+          className="peer sr-only"
+        />
         <Label
           htmlFor="expedited"
           className="flex flex-col items-center gap-2 p-4 border rounded-lg cursor-pointer hover:bg-accent transition-colors peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5"
@@ -45,5 +53,5 @@ export function SpeedSelector({ value, onChange }: SpeedSelectorProps) {
         </Label>
       </div>
     </RadioGroup>
-  )
+  );
 }

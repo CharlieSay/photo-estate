@@ -95,7 +95,7 @@ export function PhotoUpload({ projectId, onUploadComplete }: PhotoUploadProps) {
         fileName: file.name,
         fileSize: file.size,
         preview: file.name,
-        status: 'queued',
+        status: 'pending',
         progress: 0,
         enhancements: selectedEnhancements,
         speed: processingSpeed,
