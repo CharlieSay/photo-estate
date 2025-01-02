@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern, sophisticated color palette */
+    --background: 230 33% 97%;
+    --foreground: 230 40% 12%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 230 40% 12%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 40% 12%;
+    
+    --primary: 230 60% 50%;
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 230 20% 92%;
+    --secondary-foreground: 230 40% 12%;
+    
+    --muted: 230 20% 92%;
+    --muted-foreground: 230 15% 45%;
+    
+    --accent: 230 30% 95%;
+    --accent-foreground: 230 40% 12%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 230 20% 90%;
+    --input: 230 20% 90%;
+    --ring: 230 60% 50%;
+
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 230 25% 8%;
+    --foreground: 230 20% 98%;
+    
+    --card: 230 25% 11%;
+    --card-foreground: 230 20% 98%;
+    
+    --popover: 230 25% 11%;
+    --popover-foreground: 230 20% 98%;
+    
+    --primary: 230 60% 60%;
+    --primary-foreground: 230 20% 98%;
+    
+    --secondary: 230 30% 15%;
+    --secondary-foreground: 230 20% 98%;
+    
+    --muted: 230 30% 15%;
+    --muted-foreground: 230 20% 65%;
+    
+    --accent: 230 30% 15%;
+    --accent-foreground: 230 20% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 230 30% 15%;
+    --input: 230 30% 15%;
+    --ring: 230 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl font-bold leading-tight md:text-5xl;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold leading-tight md:text-3xl;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply text-xl font-semibold leading-snug;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Custom styles */
+.glass-card {
+  @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-md;
+  box-shadow: 
+    0 0 0 1px rgba(var(--primary), 0.05),
+    0 1px 3px rgba(var(--primary), 0.1),
+    0 8px 32px -8px rgba(var(--primary), 0.15);
+}
+
+.gradient-border {
+  @apply relative before:absolute before:-inset-[1px] before:rounded-[calc(var(--radius)+1px)];
+  @apply before:bg-gradient-to-br before:from-primary/20 before:via-primary/10 before:to-transparent before:-z-10;
+}
+
+/* Enhanced button styles */
+.button-glow {
+  @apply relative overflow-hidden;
+}
+
+.button-glow::after {
+  @apply absolute inset-0 rounded-[inherit] opacity-0 transition-opacity;
+  content: '';
+  background: radial-gradient(
+    circle at center,
+    hsl(var(--primary) / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+.button-glow:hover::after {
+  @apply opacity-100;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  @apply hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/10;
+  @apply transition-all duration-300 ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/30 transition-colors;
+}
+
+/* Enhanced focus states */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+}
+
+/* Subtle animations */
+@keyframes subtle-fade-in {
+  from { 
+    opacity: 0; 
+    transform: translateY(8px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fade-in {
+  animation: subtle-fade-in 0.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+/* Input field styles */
+input, textarea, select {
+  @apply bg-background border-input focus:ring-1 focus:ring-primary/30;
+  @apply placeholder:text-muted-foreground/60;
+}
+
+/* Section dividers */
+.section-divider {
+  @apply relative my-8;
+}
+
+.section-divider::before {
+  @apply absolute inset-0 h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  content: '';
+}
